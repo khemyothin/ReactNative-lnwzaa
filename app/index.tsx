@@ -11,6 +11,10 @@ export default function Index() {
         <Text style={styles.linkText}>heros</Text>
       </Link>
 
+      <Link href="/Pikachu" style={styles.link}>
+        <Text style={styles.linkText}>pokemon</Text>
+      </Link>
+
     </View>
 
   </ScrollView>
