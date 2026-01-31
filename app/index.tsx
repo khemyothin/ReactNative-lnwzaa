@@ -1,15 +1,15 @@
-import { Text, View } from "react-native";
+import { Link } from "expo-router";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+  <ScrollView style={{ flex: 1}}>
+    <View style ={styles.container}>
+
+      <Link href="/ant" style={styles.link}>
+        <Text style={styles.linkText}>heros</Text>
+      </Link>
+
     </View>
-  );
+
+  </ScrollView>
 }
