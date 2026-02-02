@@ -23,6 +23,9 @@ export default function Index() {
         <Text style={styles.linkText}>Home</Text>
       </Link>
 
+      <Link href="/flatlistexample" style={styles.link}>
+        <Text style={styles.linkText}>FlatList Example</Text>
+      </Link>
 
 
     </View>
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
   },
   link: {
     padding: 20,
-    backgroundColor: '#300fe8ff',
+    backgroundColor: '#000000ff',
     borderRadius: 10,
 
   },
