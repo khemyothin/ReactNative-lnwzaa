@@ -3,7 +3,7 @@ import { Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
 export default function Bmi() {    
-    const [weight , setWeight] = useState('70');
+    const [weight , setWeight] = useState('120');
     const [height , setHeight] = useState('170');
     const [bmi , setBmi] = useState('0');
     const [des , setDes] = useState('0');

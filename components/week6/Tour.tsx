@@ -1,6 +1,5 @@
 import React from "react";
 import { ScrollView, Text, View, Image } from "react-native";
-import TourItem from "./TourItem";
 
 export default function Tour(props) {
     return (

@@ -1,24 +1,70 @@
+import { getLocation } from "@/utils/gps";
 import { useNavigation } from "@react-navigation/native";
-import { Link } from "expo-router";
-import React, { useEffect} from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import MyMapView from "@/components/week10/MyMapView";
+import { FontAwesome } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 export default function Location() {
-  //TOP RIGHT MENU
-  const navigation = useNavigation();
+  const [location, setLocation] = useState<any>(null);
+  const [recordLocation, setRecordLocation] = useState(false);
+  
+
+  //ACTION WHEN ENTER SCREENS
+  const onLoad = async()=>{
+        let loc = await getLocation();
+        if (loc) {
+            //console.log("Location : ", loc);
+            setLocation(loc);
+        }
+    };
+    useEffect(() => {
+        // console.log("ENTER SCREEN");
+        onLoad();
+    }, []);
+    //TOP RIGHT MENU
+    const navigation = useNavigation();
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <Link href="/location-quiz" >
             <Text>Quiz</Text>
         </Link>
-      ),
+      ),  
     });
   }, [navigation]);
-  //SCREEN UI
+
+
   return (
-    <View style={{ flex: 1 }}>      
-      <Text></Text>      
+    <View style={{ flex: 1 }}>
+      <Text>{location ? new Date(location.timestamp).toString() : "-"}</Text>  
+      <View style={{flexDirection : 'row', height : 70 , backgroundColor : "#50E3C2"}}>      
+        <View style={{ flex : 1, flexDirection : 'column' }}>
+          <Text style={{ textAlign : 'center'}}>Lat/Lon</Text>
+          <Text style={{ textAlign : 'center'}}>{ location ? location.coords.latitude : "-" }</Text>                      
+          <Text style={{ textAlign : 'center'}}>{ location ? location.coords.longitude : "-" }</Text>                    
+        </View>
+       <View style={{ flex : 1, flexDirection : 'column' }}>
+          <Text style={{ textAlign : 'center'}}>Speed / Accuracy</Text>                    
+          <Text style={{ textAlign : 'center'}}>
+            { location ? Number(location.coords.speed * 3.6).toFixed(0) : "-" } km/h
+          </Text> 
+          <Text style={{ textAlign : 'center'}}> 
+            { location ? Number(location.coords.accuracy).toFixed(0) : "-" } m.
+          </Text> 
+       </View> 
+      </View>   
+      <View style={{ flex: 1 }}>
+        <MyMapView location={location} 
+        setLocation={setLocation} 
+        recordLocation={recordLocation}/>
+      </View>
+      <TouchableOpacity
+        onPress={() => { setRecordLocation(!recordLocation); }}
+        style={{ backgroundColor: "lightblue", flex: 1, alignItems: "center", justifyContent: "center", width: 80, height: 80, borderRadius: 40, position: "absolute", right: 30, bottom: 30, elevation: 5, }} >
+        <FontAwesome name={recordLocation ? "pause" : "play"} size={30} />
+      </TouchableOpacity> 
     </View>
   );
 }
