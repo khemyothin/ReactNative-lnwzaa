@@ -28,7 +28,7 @@ export default function TourFlatList(props:any) {
     
     return (
         <View style={props.style}>
-            <Text style={{ fontSize: 20 }}>Up Comimg Evrts</Text>
+            <Text style={{ fontSize: 20 }}>Up Comimg Evets</Text>
             <Text style={{ color: "grey" }}>What's the Worst That Could Happend</Text>
             <FlatList
                 horizontal={true}
