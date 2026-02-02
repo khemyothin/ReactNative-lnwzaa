@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image,View, FlatList, Text, Dimensions } from "react-native";
+import { Image, View, FlatList, Text, Dimensions } from "react-native";
 import TourItem from "./TourItem";
 
 export default function TourFlatList(props:any) {
@@ -40,12 +40,21 @@ export default function TourFlatList(props:any) {
                     ({ item, index }:any) => {
                         console.log(item, index, item.uri);
                         return (
-                                <View  style={{ marginBottom : 10 }}>
-                                    <Image style={{ width: Dimensions.get("screen").width / 2.0 - 10, height :150, borderRadius: 10 }} source={{ uri : item.uri }} />
-                                    <View style={{ marginTop : -30, height : 30 , width: 200, paddingHorizontal : 10, backgroundColor : 'black', opacity : 0.5, borderBottomLeftRadius : 10 , borderBottomRightRadius : 10 }}>
-                                        <Text style={{ fontSize:20, color : "white"}}>{item.title}</Text>
-                                    </View>            
+                                <View  style={{ marginRight : 10 }}>
+                                    <Image style={{ width:300, height :150, borderTopLeftRadius : 10 , borderTopRightRadius : 10  }} source={{ uri : item.uri }} />
+                                    <View style={{flexDirection: 'row', borderBottomLeftRadius: 10, borderBottomRightRadius: 10, borderWidth: 1, borderColor: 'gray'}}>
+                                        <View style={{padding: 10}}>
+                                            <Text style={{fontSize: 20, color: 'red', textAlign: "center"}} >{item.month}</Text>
+                                            <Text style={{fontSize: 15, color: 'gray', textAlign: "center"}} >{item.date}</Text>
+                                        </View>
+                                        <View style={{padding: 10}}>
+                                            <Text style={{fontSize: 20, color: 'black'}} >{item.title}</Text>
+                                            <Text style={{ color: 'gray'}} >{item.datetime}</Text>
+                                            <Text style={{ color: 'gray'}} >{item.place}</Text>
+                                        </View>
+                                    </View>          
                                 </View>
+                                
                             //<TourItem item={item} index={index} />
                         );
                     }

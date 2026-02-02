@@ -40,9 +40,9 @@ export default function TourFlatList(props:any) {
                     ({ item, index }:any) => {
                         console.log(item, index, item.uri);
                         return (
-                                <View  style={{ marginBottom : 10 }}>
+                                <View  style={{ marginBottom : 10, marginRight : 10}}>
                                     <Image style={{ width: Dimensions.get("screen").width / 2.0 - 10, height :150, borderRadius: 10 }} source={{ uri : item.uri }} />
-                                    <View style={{ marginTop : -30, height : 30 , width: 200, paddingHorizontal : 10, backgroundColor : 'black', opacity : 0.5, borderBottomLeftRadius : 10 , borderBottomRightRadius : 10 }}>
+                                    <View style={{ marginTop : -30, height : 30 , width: 185, paddingHorizontal : 10, backgroundColor : 'black', opacity : 0.5, borderBottomLeftRadius : 10 , borderBottomRightRadius : 10 }}>
                                         <Text style={{ fontSize:20, color : "white"}}>{item.title}</Text>
                                     </View>            
                                 </View>
