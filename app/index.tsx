@@ -15,6 +15,13 @@ export default function Index() {
         <Text style={styles.linkText}>pokemon</Text>
       </Link>
 
+      <Link href="/health" style={styles.link}>
+        <Text style={styles.linkText}>Health</Text>
+      </Link>
+
+      
+
+
     </View>
 
   </ScrollView>
@@ -28,9 +35,14 @@ const styles = StyleSheet.create({
   gap: 15
   },
   link: {
+    padding: 20,
+    backgroundColor: '#300fe8ff',
+    borderRadius: 10,
 
   },
   linkText:{
+    fontSize: 18,
+    color: '#e65613ff'
 
   }
 })
