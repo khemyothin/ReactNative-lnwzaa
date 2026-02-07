@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   return (
-  <ScrollView style={{ flex: 1}}>
+  <ScrollView>
     <View style ={styles.container}>
 
       <Link href="/ant" style={styles.link}>
@@ -30,6 +30,11 @@ export default function Index() {
       <Link href="/location" style={styles.link}>
         <Text style={styles.linkText}>Location</Text>
       </Link>
+
+      <Link href="/book" style={styles.link}>
+        <Text style={styles.linkText}>Book</Text>
+      </Link>
+
 
     </View>
 
